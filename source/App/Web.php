@@ -13,4 +13,14 @@ class Web
     {
         echo "Olá, Mundo! Sobre";
     }
+
+    public function location()
+    {
+        echo "Essa é a minha localização!";
+    }
+
+    public function blog (){
+        echo "esse é o meu blog bonitinho...";
+    }
+
 }
