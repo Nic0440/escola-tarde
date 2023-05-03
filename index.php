@@ -17,6 +17,11 @@ $route->get("/sobre", "Web:about");
 $route->get("/localizacao","Web:location");
 $route->get("/blog","Web:blog");
 
+$route->group("/app");
+$route->get("/", "App:home");
+
+$route->group(null);
+
 $route->dispatch();
 
 if ($route->error()) {

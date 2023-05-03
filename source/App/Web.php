@@ -2,10 +2,15 @@
 
 namespace Source\App;
 
+use League\Plates\Engine;
+
 class Web
 {
+
     public function home()
     {
+        $view = new Engine(__DIR__ . "/../../themes/web","php");
+        $view->render("home",[]);
         echo "Olá, Mundo! Home";
     }
 
