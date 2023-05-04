@@ -25,7 +25,7 @@
   "require": {
     "php": ">=7.2.1",
     "ext-pdo": ">=7.2",
-    "league/plates": "v3.5.0",
-    "coffeecode/router" : "1.0.8"
+    "coffeecode/router" : "1.0.8",
+    "league/plates": "3.*"
   }
 }

@@ -33,16 +33,24 @@ class Web
         ]);
     }
 
-    public function blog (){
+    public function blog ()
+    {
         echo "esse é o meu blog bonitinho...";
     }
 
-    public function faq (){
+    public function faq ()
+    {
         echo "Perguntas Mais Frequentes!";
     }
 
-    public function chart (){
+    public function chart ()
+    {
         echo "Carrinho de compras";
+    }
+
+    public function error (array $data) : void
+    {
+        var_dump($data);
     }
 
 }

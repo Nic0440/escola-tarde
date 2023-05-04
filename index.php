@@ -19,6 +19,8 @@ $route->get("/blog","Web:blog");
 $route->get("/faq","Web:faq");
 $route->get("/carrinho-compras","Web:chart");
 
+$route->get("/ops/{errcode}", "Web:error");
+
 $route->group("/app");
 $route->get("/", "App:home");
 
