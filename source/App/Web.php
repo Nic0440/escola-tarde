@@ -3,6 +3,7 @@
 namespace Source\App;
 
 use League\Plates\Engine;
+use Source\Models\User;
 
 class Web
 {
@@ -17,6 +18,19 @@ class Web
     public function home()
     {
         echo $this->view->render("home",[]);
+    }
+
+    public function register()
+    {
+        $user = new User("Fernando","fernando@gmail.com","987654");
+        var_dump($user);
+        //$user->insert();
+        //$users = $user->selectAll();
+        //var_dump($users);
+
+        echo $this->view->render("register",[
+            "users" => $user->selectAll()
+        ]);
     }
 
     public function about()

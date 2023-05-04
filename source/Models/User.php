@@ -2,6 +2,8 @@
 
 namespace Source\Models;
 
+use Source\Core\Connect;
+
 class User {
     private $name;
     private $email;
@@ -48,6 +50,21 @@ class User {
     public function setPassword(mixed $password): void
     {
         $this->password = $password;
+    }
+
+    public function insert()
+    {
+        $query = "INSERT INTO users 
+                  VALUES (NULL,'{$this->name}','{$this->email}','{$this->password}')";
+        Connect::getInstance()->query($query);
+        //$stmt->execute();
+    }
+
+    public function selectAll ()
+    {
+        $query = "SELECT * FROM users";
+        $stmt = Connect::getInstance()->query($query);
+        return $stmt->fetchAll();
     }
 
 }
