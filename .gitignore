@@ -1,4 +1,5 @@
 /.idea
+/assets
 /vendor
 /utilities
 composer.lock

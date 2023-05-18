@@ -19,6 +19,8 @@ $route->get("/localizacao","Web:location");
 $route->get("/blog","Web:blog");
 $route->get("/faq","Web:faq");
 $route->get("/carrinho-compras","Web:chart");
+$route->get("/servicos","Web:services");
+$route->get("/contato","Web:contact");
 
 $route->get("/ops/{errcode}", "Web:error");
 

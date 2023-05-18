@@ -3,6 +3,7 @@
 namespace Source\App;
 
 use League\Plates\Engine;
+use Source\Models\Faq;
 use Source\Models\User;
 
 class Web
@@ -54,7 +55,12 @@ class Web
 
     public function faq ()
     {
-        echo "Perguntas Mais Frequentes!";
+        $faqs = new Faq();
+        //var_dump($faqs->selectAll());
+        echo $this->view->render("faq",[
+            "faqs" => $faqs->selectAll()
+        ]);
+
     }
 
     public function chart ()
@@ -62,9 +68,21 @@ class Web
         echo "Carrinho de compras";
     }
 
+    public function services ()
+    {
+        echo $this->view->render("services",[]);
+    }
+
+    public function contact ()
+    {
+        echo $this->view->render("contact",[]);
+    }
+
     public function error (array $data) : void
     {
         var_dump($data);
     }
+
+
 
 }
