@@ -16,6 +16,11 @@ $route->get("/", "Web:home");
 $route->get("/sobre", "Web:about");
 $route->get("/registro","Web:register");
 $route->get("/localizacao","Web:location");
+
+$route->get("/cursos","Web:courses");
+$route->get("/cursos/{category}","Web:courses");
+
+
 $route->get("/blog","Web:blog");
 $route->get("/faq","Web:faq");
 $route->get("/carrinho-compras","Web:chart");

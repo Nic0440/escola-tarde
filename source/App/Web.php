@@ -5,6 +5,7 @@ namespace Source\App;
 use League\Plates\Engine;
 use Source\Models\Faq;
 use Source\Models\User;
+use Source\Models\Course;
 
 class Web
 {
@@ -51,6 +52,22 @@ class Web
     public function blog ()
     {
         echo "esse é o meu blog bonitinho...";
+    }
+
+    public function courses(array $data) : void
+    {
+        $courses = new Course();
+
+        if(!empty($data["category"])){
+            //var_dump($data["category"]);
+            echo $this->view->render("courses",[
+                "courses" => $courses->selectByCategory($data["category"])]
+            );
+            return;
+        }
+
+        //var_dump($courses->selectAll());
+        echo $this->view->render("courses",["courses" => $courses->selectAll()]);
     }
 
     public function faq ()
