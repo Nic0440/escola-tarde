@@ -3,6 +3,7 @@
 namespace Source\App;
 
 use League\Plates\Engine;
+use Source\Models\Category;
 use Source\Models\Faq;
 use Source\Models\User;
 use Source\Models\Course;
@@ -11,15 +12,21 @@ class Web
 {
 
     private $view;
+    private $categories;
 
     public function __construct()
     {
         $this->view = new Engine(__DIR__ . "/../../themes/web","php");
+        $categories = new Category();
+        $this->categories = $categories->selectAll();
+        //var_dump($this->categories);
     }
 
     public function home()
     {
-        echo $this->view->render("home",[]);
+        echo $this->view->render("home",[
+            "categories" => $this->categories
+        ]);
     }
 
     public function register()
@@ -61,7 +68,8 @@ class Web
         if(!empty($data["category"])){
             //var_dump($data["category"]);
             echo $this->view->render("courses",[
-                "courses" => $courses->selectByCategory($data["category"])]
+                "courses" => $courses->selectByCategory($data["category"]),
+                    "categories" => $this->categories]
             );
             return;
         }
