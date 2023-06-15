@@ -37,8 +37,8 @@
     };
 
     form.addEventListener("submit", async (e) => {
-        console.log('submit');
         e.preventDefault();
+        //console.log(new FormData(form));
         const data = await fetch(`<?= url("api/user");?>`,{
             method: "POST",
             body: new FormData(form),

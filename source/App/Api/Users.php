@@ -22,6 +22,14 @@ class Users extends Api
 
     public function create (array $data) : void
     {
+
+        if(!empty($data)){
+            //var_dump($data);
+            http_response_code(200);
+            echo json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            return;
+        }
+
         $response = [
             "code" => 200,
             "type" => "success",
