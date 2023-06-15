@@ -15,8 +15,8 @@ class Course
 
     public function selectByCategory (string $category)
     {
-        $query = "SELECT * FROM courses 
-    JOIN categories ON courses.category_id = categories.id 
+        $query = "SELECT courses.name, price, abstract FROM courses 
+         JOIN categories ON courses.category_id = categories.id 
          WHERE categories.name = '{$category}'";
 
         $stm = Connect::getInstance()->query($query);

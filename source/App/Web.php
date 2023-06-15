@@ -29,16 +29,16 @@ class Web
         ]);
     }
 
-    public function register()
+    public function register(array $data)
     {
-        $user = new User("Fernando","fernando@gmail.com","987654");
-        var_dump($user);
-        //$user->insert();
-        //$users = $user->selectAll();
-        //var_dump($users);
+        if(!empty($data)){
+            $response = json_encode($data);
+            echo $response;
+            return;
+        }
 
         echo $this->view->render("register",[
-            "users" => $user->selectAll()
+            "categories" => $this->categories
         ]);
     }
 
@@ -69,13 +69,16 @@ class Web
             //var_dump($data["category"]);
             echo $this->view->render("courses",[
                 "courses" => $courses->selectByCategory($data["category"]),
-                    "categories" => $this->categories]
-            );
+                "categories" => $this->categories
+            ]);
             return;
         }
 
         //var_dump($courses->selectAll());
-        echo $this->view->render("courses",["courses" => $courses->selectAll()]);
+        echo $this->view->render("courses",[
+            "courses" => $courses->selectAll(),
+            "categories" => $this->categories
+        ]);
     }
 
     public function faq ()
