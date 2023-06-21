@@ -24,6 +24,8 @@ class Users extends Api
 
     public function create (array $data) : void
     {
+        //echo json_encode($data);
+
         if(!empty($data)){
             $user = new User($data["name"],$data["email"],$data["password"]);
             $user->insert();
@@ -43,5 +45,6 @@ class Users extends Api
         ];
         http_response_code(200);
         echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
     }
 }
