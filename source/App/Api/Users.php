@@ -29,9 +29,8 @@ class Users extends Api
             $user->insert();
             http_response_code(200);
             $response["user"] = [
-                "name" => "Name",
-                "email" => "Email",
-                "password" => "Password"
+                "name" => $user->getName(),
+                "email" => $user->getEmail()
             ];
             echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
             return;

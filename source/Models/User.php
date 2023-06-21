@@ -8,7 +8,7 @@ class User {
     private $name;
     private $email;
     private $password;
-    private $address; // Atributo novo
+    private $address;
 
     public function __construct (
         $name = null,
@@ -21,6 +21,16 @@ class User {
         $this->password = $password;
         $this->address = $address; // Atribuição nova
     }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?Address $address): void
+    {
+        $this->address = $address;
+    } // Atributo novo
 
     public function getName()
     {
