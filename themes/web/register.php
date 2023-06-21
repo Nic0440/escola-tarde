@@ -32,8 +32,8 @@
     const form = document.querySelector(".php-email-form");
 
     const headers = {
-            email: "fabiosantos@ifsul.edu.br",
-            password: "12345678"
+        email: "fabiosantos@ifsul.edu.br",
+        password: "12345678"
     };
 
     form.addEventListener("submit", async (e) => {

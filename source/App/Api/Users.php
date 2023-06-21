@@ -2,6 +2,8 @@
 
 namespace Source\App\Api;
 
+use Source\Models\User;
+
 class Users extends Api
 {
     public function __construct()
@@ -22,11 +24,16 @@ class Users extends Api
 
     public function create (array $data) : void
     {
-
         if(!empty($data)){
-            //var_dump($data);
+            $user = new User($data["name"],$data["email"],$data["password"]);
+            $user->insert();
             http_response_code(200);
-            echo json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            $response["user"] = [
+                "name" => "Name",
+                "email" => "Email",
+                "password" => "Password"
+            ];
+            echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
             return;
         }
 

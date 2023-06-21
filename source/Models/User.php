@@ -55,9 +55,12 @@ class User {
     public function insert()
     {
         $query = "INSERT INTO users 
-                  VALUES (NULL,'{$this->name}','{$this->email}','{$this->password}')";
-        Connect::getInstance()->query($query);
-        //$stmt->execute();
+                  VALUES (NULL,:name,:email,:password)";
+        $stmt = Connect::getInstance()->prepare($query);
+        $stmt->bindParam(":name", $this->name);
+        $stmt->bindParam(":email", $this->email);
+        $stmt->bindParam(":password",$this->password);
+        $stmt->execute();
     }
 
     public function selectAll ()
