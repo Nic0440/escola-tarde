@@ -14,7 +14,10 @@ $route->group(null);
 
 $route->get("/", "Web:home");
 $route->get("/sobre", "Web:about");
+
 $route->get("/registro","Web:register");
+$route->get("/login","Web:login");
+
 $route->get("/localizacao","Web:location");
 $route->get("/cursos","Web:courses");
 $route->get("/cursos/{category}","Web:courses");
@@ -23,6 +26,12 @@ $route->get("/faq","Web:faq");
 $route->get("/carrinho-compras","Web:chart");
 $route->get("/servicos","Web:services");
 $route->get("/contato","Web:contact");
+
+
+// INICIO - APP
+$route->get("/app", "App:home");
+// FIM - APP
+
 
 $route->get("/ops/{errcode}", "Web:error");
 

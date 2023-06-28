@@ -47,4 +47,15 @@ class Users extends Api
         echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
     }
+
+    public function login (array $data) : void
+    {
+        $response = [
+            "code" => 200,
+            "type" => "success",
+            "message" => "Usuário logado com sucesso"
+        ];
+        http_response_code(200);
+        echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
 }
