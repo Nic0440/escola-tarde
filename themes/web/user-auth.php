@@ -31,7 +31,7 @@
         } catch (err) {
             console.error(err);
             return {
-                error: true,
+                type: "error",
                 message: err.message
             };
         }
