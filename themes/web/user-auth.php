@@ -14,13 +14,6 @@
 </form>
 
 <script type="text/javascript" async>
-    const formData = new FormData(document.querySelector("form"));
-
-    const options = {
-        method: 'POST',
-        body : document.querySelector("form")
-    };
-
     const url = `<?= url("api/user/login");?>`;
 
     async function request (url, options) {
@@ -39,6 +32,11 @@
 
     document.querySelector("form").addEventListener("submit", async (e) => {
         e.preventDefault();
+        const formData = new FormData(document.querySelector("form"));
+        const options = {
+            method: 'POST',
+            body : formData
+        };
         const resp = await request(url, options);
         console.log(resp);
     });

@@ -62,6 +62,20 @@ class User {
         $this->password = $password;
     }
 
+    public function auth (string $email, string $password) : bool
+    {
+        $query = "SELECT * FROM users WHERE email = :email AND password = :password";
+        $stmt = Connect::getInstance()->prepare($query);
+        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":password", $password);
+        $stmt->execute();
+        if($stmt->rowCount() == 0) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function insert()
     {
         $query = "INSERT INTO users 
