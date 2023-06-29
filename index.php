@@ -30,6 +30,7 @@ $route->get("/contato","Web:contact");
 
 // INICIO - APP
 $route->get("/app", "App:home");
+$route->get("/app/perfil", "App:profile");
 // FIM - APP
 
 

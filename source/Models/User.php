@@ -72,7 +72,6 @@ class User {
         if($stmt->rowCount() == 0) {
             return false;
         }
-
         return true;
     }
 

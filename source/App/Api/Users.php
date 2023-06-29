@@ -58,7 +58,6 @@ class Users extends Api
                 "type" => "error",
                 "message" => "Email ou senha inválidos"
             ];
-            //http_response_code(401);
             echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
             return;
         }
@@ -68,7 +67,6 @@ class Users extends Api
             "type" => "success",
             "message" => "Usuário logado com sucesso"
         ];
-        //http_response_code(200);
         echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
     }

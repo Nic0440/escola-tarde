@@ -4,7 +4,6 @@ namespace Source\App;
 
 use League\Plates\Engine;
 
-
 class App
 {
 
@@ -16,7 +15,12 @@ class App
 
     public function home()
     {
-        echo "Olá, Mundo!";;
+        echo $this->view->render("home",[]);
+    }
+
+    public function profile()
+    {
+        echo $this->view->render("profile",[]);
     }
 
 }
