@@ -27,18 +27,12 @@ $route->get("/carrinho-compras","Web:chart");
 $route->get("/servicos","Web:services");
 $route->get("/contato","Web:contact");
 
-
-// INICIO - APP
-$route->get("/app", "App:home");
-$route->get("/app/perfil", "App:profile");
-// FIM - APP
-
-
-$route->get("/ops/{errcode}", "Web:error");
-
 $route->group("/app");
 $route->get("/", "App:home");
+$route->group(null);
 
+$route->group("/adm");
+$route->get("/", "Adm:home");
 $route->group(null);
 
 $route->dispatch();
