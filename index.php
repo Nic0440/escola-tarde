@@ -29,10 +29,12 @@ $route->get("/contato","Web:contact");
 
 $route->group("/app");
 $route->get("/", "App:home");
+$route->get("/perfil", "App:profile");
 $route->group(null);
 
-$route->group("/adm");
+$route->group("/admin");
 $route->get("/", "Adm:home");
+$route->get("/professores", "Adm:teachers");
 $route->group(null);
 
 $route->dispatch();

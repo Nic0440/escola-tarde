@@ -64,15 +64,30 @@ class User {
 
     public function auth (string $email, string $password) : bool
     {
-        $query = "SELECT * FROM users WHERE email = :email AND password = :password";
+
+        $query = "SELECT * FROM users WHERE email LIKE :email";
+
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":password", $password);
         $stmt->execute();
+
         if($stmt->rowCount() == 0) {
+            $this->message = "Usuário não encontrado!";
             return false;
         }
+
+        $user = $stmt->fetch();
+
+        if(!password_verify($password, $user->password)) {
+            $this->message = "Senha incorreta!";
+            return false;
+        }
+
+        $this->id = $user->id;
+        $this->name = $user->name;
+        $this->message = "Usuário autenticado com sucesso!";
         return true;
+
     }
 
     public function insert()
@@ -82,6 +97,7 @@ class User {
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":email", $this->email);
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
         $stmt->bindParam(":password",$this->password);
         $stmt->execute();
     }

@@ -1,3 +1,3 @@
 <?php
 
-echo "Olá, Home";
+echo "Olá, Home do APP";

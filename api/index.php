@@ -13,6 +13,9 @@ $route->namespace("Source\App\Api");
 $route->post("/user/login","Users:login");
 $route->post("/user","Users:create");
 
+// apenas para testes
+$route->get("/user/test","Users:testToken");
+
 $route->dispatch();
 
 /** ERROR REDIRECT */
