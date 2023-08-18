@@ -3,6 +3,7 @@
 namespace Source\App\Api;
 
 use Source\Models\User;
+use Source\Core\TokenJWT;
 
 class Users extends Api
 {
@@ -68,6 +69,26 @@ class Users extends Api
             "message" => "Usuário logado com sucesso"
         ];
         echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+    }
+
+    public function testToken (array $data) : void
+    {
+        if(!empty($data)) {
+            echo "Email: {$data["email"]} - Password: {$data["password"]} <br>";
+            $user = new User();
+            if(!$user->auth($data["email"],$data["password"])){
+                echo "Email ou senha inválidos";
+                return;
+            }
+
+            $token = (new TokenJWT())->create([
+                "email" => $user->getEmail()
+            ]);
+
+            echo "Esse é o toke -> {$token}";
+
+        }
 
     }
 }

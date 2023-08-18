@@ -15,6 +15,7 @@ $route->post("/user","Users:create");
 
 // apenas para testes
 $route->get("/user/test","Users:testToken");
+$route->post("/user/test","Users:testToken");
 
 $route->dispatch();
 
